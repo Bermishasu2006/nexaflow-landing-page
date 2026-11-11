@@ -1,0 +1,178 @@
+.how {
+  background: var(--surface);
+}
+
+/* ===== About block ===== */
+.how__about {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 64px;
+  margin-bottom: 112px;
+}
+
+.how__about-text > p:not(.eyebrow) {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.how__benefits {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.how__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.how__benefits svg {
+  margin-top: 2px;
+  color: var(--purple-600);
+}
+
+.how__stats {
+  display: grid;
+  gap: 16px;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: var(--navy-800);
+  box-shadow: var(--shadow-lg);
+}
+
+.how__stats div {
+  display: flex;
+  flex-direction: column-reverse; /* show the number above its label */
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.how__stats dd {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.how__stats dt {
+  margin-top: 4px;
+  color: #b8c0d9;
+  font-size: 0.95rem;
+}
+
+.how__stats div:first-child dd {
+  color: var(--purple-500);
+}
+
+/* ===== Steps ===== */
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Dashed connector line behind the step icons (desktop only) */
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 68px;
+  left: 16%;
+  right: 16%;
+  border-top: 2px dashed #d5d1f5;
+}
+
+.step {
+  position: relative;
+  padding: 36px 28px 32px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.step__number {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #c3bdf3;
+}
+
+.step__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background: var(--navy-800);
+  color: #fff;
+  box-shadow: 0 0 0 8px var(--purple-50);
+}
+
+.step h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+}
+
+@media (max-width: 900px) {
+  .how__about {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 88px;
+  }
+
+  .how__stats {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+    gap: 20px;
+  }
+
+  .steps::before {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .how__about {
+    margin-bottom: 72px;
+  }
+
+  .how__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .how__stats dd {
+    font-size: 1.7rem;
+  }
+}

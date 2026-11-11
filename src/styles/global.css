@@ -1,0 +1,358 @@
+/* ===== Design tokens ===== */
+:root {
+  --navy-900: #0b1530;
+  --navy-800: #0f1b3d;
+  --navy-700: #1a2b5c;
+  --navy-600: #24397a;
+  --purple-600: #6d5bd0;
+  --purple-500: #8b7cf6;
+  --purple-100: #eeebfd;
+  --purple-50: #f6f4ff;
+  --green-600: #15803d;
+  --green-100: #dcfce7;
+  --amber-100: #fef3c7;
+  --amber-700: #a16207;
+  --red-600: #dc2626;
+
+  --text: #0f172a;
+  --text-muted: #5b6478;
+  --border: #e4e7ef;
+  --surface: #ffffff;
+  --background: #f8f9fc;
+
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-body);
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 1px 2px rgba(15, 27, 61, 0.06), 0 1px 3px rgba(15, 27, 61, 0.05);
+  --shadow: 0 10px 30px -12px rgba(15, 27, 61, 0.18);
+  --shadow-lg: 0 30px 60px -20px rgba(15, 27, 61, 0.3);
+  --nav-height: 72px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy-800);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--purple-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Sections stop below the fixed navbar when scrolled to. */
+section[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+/* ===== Layout helpers ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.section {
+  padding-block: 112px;
+}
+
+.section-header {
+  max-width: 680px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.section-header h2,
+.how__about h2,
+.contact__intro h2 {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+}
+
+.section-header__text {
+  margin-top: 16px;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple-600);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  cursor: progress;
+  opacity: 0.8;
+  transform: none;
+}
+
+.btn--primary {
+  background: var(--navy-800);
+  color: #fff;
+  box-shadow: 0 6px 16px -6px rgba(15, 27, 61, 0.5);
+}
+
+.btn--primary:hover {
+  background: var(--navy-600);
+}
+
+.btn--accent {
+  background: var(--purple-500);
+  color: #fff;
+}
+
+.btn--accent:hover {
+  background: #9d90f8;
+  box-shadow: 0 10px 24px -8px rgba(139, 124, 246, 0.7);
+}
+
+.btn--secondary {
+  background: var(--surface);
+  color: var(--navy-800);
+  border-color: var(--border);
+}
+
+.btn--secondary:hover {
+  border-color: var(--purple-500);
+  color: var(--purple-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--lg {
+  padding: 14px 26px;
+  font-size: 1rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* ===== Accessibility ===== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--navy-800);
+  color: #fff;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Logo ===== */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo__mark {
+  width: 34px;
+  height: 34px;
+}
+
+.logo__text {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--navy-800);
+}
+
+.logo__text span {
+  color: var(--purple-600);
+}
+
+.logo--light .logo__text {
+  color: #fff;
+}
+
+.logo--light .logo__text span {
+  color: var(--purple-500);
+}
+
+/* ===== Scroll reveal animation ===== */
+/* Uses an animation (not a transition) so it never interferes with hover
+   effects. --delay can be set inline to stagger items in a grid. */
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  animation: reveal 0.7s var(--ease) var(--delay, 0ms) backwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .section {
+    padding-block: 88px;
+  }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .section {
+    padding-block: 72px;
+  }
+
+  .section-header__text {
+    font-size: 1rem;
+  }
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+  }
+}

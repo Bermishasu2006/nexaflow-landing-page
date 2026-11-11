@@ -1,0 +1,25 @@
+# Dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables and local secrets
+.env
+.env.*
+*.local
+
+# Deployment tool folders
+.vercel/
+.netlify/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
