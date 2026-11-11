@@ -1,14 +1,33 @@
 # NexaFlow — SaaS Landing Page
 
-A responsive marketing landing page for **NexaFlow**, a fictional workflow and project management platform. Built with React and Vite as a front-end development internship project.
+A responsive marketing landing page for **NexaFlow**, a workflow and project management platform. Built with React and Vite as a front-end development internship project.
 
-![NexaFlow desktop hero](screenshots/desktop-hero.png)
+## Live Demo
 
-## Overview
+**🔗 Website:** [https://nexaflow-landing-page-sigma.vercel.app](https://nexaflow-landing-page-sigma.vercel.app)
 
-The page introduces NexaFlow to potential customers and guides them toward requesting a demo. It contains six sections: navigation, hero, features, about / how it works, pricing, and a demo request form with client-side validation.
+**📁 Source code:** [https://github.com/Bermishasu2006/nexaflow-landing-page](https://github.com/Bermishasu2006/nexaflow-landing-page)
 
-> **Note:** This is a frontend-only project. There is no backend or database. The demo request form validates input in the browser and shows a success message, but **no data is sent to a server or stored anywhere**.
+## About the Project
+
+> **NexaFlow is a fictional product.** It is not a real company or service. The brand, customer names, statistics and pricing on the page were created for this assignment to demonstrate a realistic commercial SaaS landing page.
+
+The page introduces NexaFlow to potential customers and guides them toward requesting a demo.
+
+> **Frontend-only form:** There is no backend or database. The demo request form validates input in the browser and shows a success message, but **no data is sent to a server or stored anywhere**. The success message itself states this to the user.
+
+## Website Sections
+
+| # | Section | What it contains |
+| --- | --- | --- |
+| 1 | **Navigation** | NexaFlow logo, links to Home, Features, How It Works, Pricing and Contact, a Get Started button and a mobile hamburger menu |
+| 2 | **Hero** | "Work Smarter. Achieve More." headline, short description, Get Started and Explore Features buttons, and a dashboard mockup |
+| 3 | **Features** | Six feature cards: Smart Task Management, Project Progress Tracking, Team Collaboration, Productivity Analytics, Workflow Automation and Secure by Default |
+| 4 | **About / How It Works** | What NexaFlow does, key benefits, headline stats and a three-step guide |
+| 5 | **Pricing** | Starter (Free) and Professional ($12/month) plans, with Professional highlighted as recommended |
+| 6 | **Contact / Demo Request** | Form with full name, email, company (optional), plan of interest (optional) and message |
+
+A footer repeats the section links and includes a Back to top link.
 
 ## Features
 
@@ -36,20 +55,33 @@ The page introduces NexaFlow to potential customers and guides them toward reque
 
 ```
 nexaflow-landing-page/
-├── index.html              # HTML shell, meta tags, Google Fonts
-├── public/favicon.svg      # Brand icon
-├── screenshots/            # Desktop and mobile screenshots
+├── index.html                  # HTML shell, meta tags, Google Fonts
+├── public/
+│   └── favicon.svg             # Brand icon
+├── screenshots/                # Desktop and mobile screenshots
 ├── src/
-│   ├── main.jsx            # Entry point — mounts <App />
-│   ├── App.jsx             # Page layout and shared "selected plan" state
-│   ├── components/         # Reusable UI components (one per section + helpers)
-│   ├── data/content.js     # All text content: nav links, features, steps, plans
+│   ├── main.jsx                # Entry point — mounts <App />
+│   ├── App.jsx                 # Page layout and shared "selected plan" state
+│   ├── components/
+│   │   ├── Navbar.jsx          # Navigation bar and mobile menu
+│   │   ├── Hero.jsx            # Hero section
+│   │   ├── DashboardMockup.jsx # HTML/CSS dashboard illustration
+│   │   ├── Features.jsx        # Features section
+│   │   ├── FeatureCard.jsx     # Reusable feature card
+│   │   ├── HowItWorks.jsx      # About section and three steps
+│   │   ├── Pricing.jsx         # Pricing plans
+│   │   ├── Contact.jsx         # Demo request form, validation and success state
+│   │   ├── FormField.jsx       # Reusable label + input + error message wrapper
+│   │   ├── SectionHeader.jsx   # Reusable section heading
+│   │   ├── Logo.jsx            # Brand logo
+│   │   └── Footer.jsx          # Footer links and Back to top
+│   ├── data/content.js         # All text content: nav links, features, steps, plans
 │   ├── hooks/useScrollReveal.js  # Fade-in-on-scroll behaviour
-│   └── styles/             # global.css (tokens, buttons) + one CSS file per section
-├── vite.config.js          # Vite configuration (React plugin)
-├── netlify.toml            # Netlify build settings
-├── package.json            # Scripts and dependencies
-└── package-lock.json       # Exact dependency versions
+│   └── styles/                 # global.css (tokens, buttons) + one CSS file per section
+├── vite.config.js              # Vite configuration (React plugin)
+├── netlify.toml                # Netlify build settings (alternative host)
+├── package.json                # Scripts and dependencies
+└── package-lock.json           # Exact dependency versions
 ```
 
 ## Getting Started
@@ -58,7 +90,7 @@ nexaflow-landing-page/
 
 ```bash
 # 1. Get the code and open the project folder
-git clone <your-repository-url>
+git clone https://github.com/Bermishasu2006/nexaflow-landing-page.git
 cd nexaflow-landing-page
 
 # 2. Install dependencies
@@ -76,10 +108,35 @@ npm run preview
 
 ## Deployment
 
-The project is ready to deploy as a static site.
+The site is deployed on **Vercel** as a static site, built from the `main` branch of the GitHub repository.
 
-- **Vercel:** Import the repository; Vercel detects Vite automatically (build command `npm run build`, output directory `dist`).
-- **Netlify:** Import the repository; `netlify.toml` already sets the build command and the `dist` publish folder.
+- **Production URL:** https://nexaflow-landing-page-sigma.vercel.app
+- **Framework preset:** Vite
+- **Install command:** `npm install`
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+
+No environment variables or server configuration are required. The project can also be deployed on **Netlify**; `netlify.toml` already sets the build command and the `dist` publish folder.
+
+## Testing
+
+The site was checked with an automated browser test script (Puppeteer driving headless Google Chrome) during development. The script is a development tool and is not included in this repository.
+
+**Result: 52 of 52 checks passed** against the local development server, the local production build (`npm run preview`) and the live Vercel deployment (12 November 2026).
+
+The checks covered:
+
+- All six sections present, with the required headline, feature cards, three steps, both pricing plans and labelled form fields
+- No empty or broken links
+- Every navigation and footer link scrolls to its section, and the active link is highlighted
+- Hero, navbar and pricing buttons go to the right sections; pricing buttons pre-select the plan in the form
+- Form validation: empty fields, invalid email format, focus moved to the first error
+- Successful submission: loading state, success message with the frontend-only notice, no page reload, focus moved to the message, form reset with "Send another request"
+- Mobile menu opens, closes on link click and closes on Escape at 820px, 375px and 320px widths
+- No horizontal overflow at 1440px, 820px, 375px and 320px widths
+- No console errors or failed network requests
+
+**Not covered by automated tests:** screen-reader testing, browsers other than Chrome (such as Firefox and Safari), and physical mobile devices (mobile layouts were tested with Chrome's device emulation).
 
 ## Design Decisions and Challenges
 
@@ -95,10 +152,8 @@ The project is ready to deploy as a static site.
 
 **Desktop — full page**
 
-![Desktop full page](screenshots/desktop-full.png)
+![NexaFlow desktop full page](screenshots/desktop-full.png)
 
-| Mobile — full page | Mobile — navigation menu |
+| Mobile — full page | Mobile — navigation menu open |
 | --- | --- |
-| ![Mobile full page](screenshots/mobile-full.png) | ![Mobile navigation menu open](screenshots/mobile-menu.png) |
-
-More screenshots: [`desktop-hero.png`](screenshots/desktop-hero.png) (hero section) and [`desktop-contact-success.png`](screenshots/desktop-contact-success.png) (form success state).
+| ![NexaFlow mobile full page](screenshots/mobile-full.png) | ![NexaFlow mobile navigation menu open](screenshots/mobile-menu.png) |
